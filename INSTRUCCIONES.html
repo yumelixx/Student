@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prueba 2 — Programación III</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --text: #1d2330;
+    --muted: #5b6475;
+    --border: #dfe3ea;
+    --accent: #2f6fdb;
+    --code-bg: #eef1f6;
+    --quote-bg: #f3f6fc;
+    --fix: #c2410c;
+    --fix-bg: #fff1e8;
+    --complete: #0f766e;
+    --complete-bg: #e6f6f3;
+    --create: #6d28d9;
+    --create-bg: #f1ebff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14171d;
+      --card: #1c2028;
+      --text: #e6e9ef;
+      --muted: #9aa3b2;
+      --border: #2d333e;
+      --accent: #7aa7ff;
+      --code-bg: #262b35;
+      --quote-bg: #212734;
+      --fix: #fb923c;
+      --fix-bg: #3a2416;
+      --complete: #5eead4;
+      --complete-bg: #12302c;
+      --create: #c4b5fd;
+      --create-bg: #2a2142;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  main { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 2rem; margin: 0 0 4px; }
+  h2 { font-size: 1.35rem; margin: 40px 0 12px; padding-bottom: 6px; border-bottom: 2px solid var(--border); }
+  h3 { font-size: 1.15rem; margin: 0; }
+  p { margin: 8px 0; }
+  .subtitle { color: var(--muted); margin: 0 0 20px; }
+  .intro { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; }
+  nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; }
+  nav.toc a {
+    text-decoration: none; color: var(--accent); background: var(--card);
+    border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; font-size: 0.9rem;
+  }
+  nav.toc a:hover { border-color: var(--accent); }
+  ul { padding-left: 22px; margin: 8px 0; }
+  li { margin: 4px 0; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
+    font-size: 0.9em; background: var(--code-bg); border-radius: 4px; padding: 1px 5px;
+  }
+  pre {
+    background: var(--code-bg); border-radius: 8px; padding: 12px 14px; overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace; font-size: 0.88rem; line-height: 1.5;
+  }
+  pre code { background: none; padding: 0; font-size: inherit; }
+  table { border-collapse: collapse; width: 100%; background: var(--card); border-radius: 8px; overflow: hidden; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 600; font-size: 0.9rem; }
+  tr:last-child td { border-bottom: none; }
+  .important {
+    border-left: 4px solid var(--fix); background: var(--fix-bg); border-radius: 6px; padding: 10px 14px; margin: 12px 0;
+  }
+  .task {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px 20px; margin: 16px 0; scroll-margin-top: 16px;
+  }
+  .task-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .task-head .points { margin-left: auto; color: var(--muted); font-weight: 600; white-space: nowrap; }
+  .badge { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; border-radius: 6px; padding: 2px 8px; }
+  .badge.fix { color: var(--fix); background: var(--fix-bg); }
+  .badge.complete { color: var(--complete); background: var(--complete-bg); }
+  .badge.create { color: var(--create); background: var(--create-bg); }
+  .meta { color: var(--muted); font-size: 0.95rem; margin: 6px 0 10px; }
+  blockquote {
+    margin: 10px 0; padding: 10px 14px; background: var(--quote-bg);
+    border-left: 4px solid var(--accent); border-radius: 6px; font-style: italic;
+  }
+  .label { font-weight: 700; }
+  .total { margin-top: 32px; font-weight: 600; }
+  @media print {
+    body { background: #fff; color: #000; }
+    .task, .intro, table { border-color: #bbb; }
+    nav.toc { display: none; }
+    .task { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Prueba 2 — Programación III</h1>
+<p class="subtitle">Unity 2D · 7 tareas · 9.0 puntos</p>
+
+<div class="intro">
+  <p>Este proyecto de Unity funciona casi completo, pero un compañero de equipo dejó <strong>reportes de errores</strong>
+  y <strong>pedidos</strong> sin terminar. Tu trabajo es arreglar y completar el código.</p>
+  <p>Hay <strong>7 tareas</strong>. Cada tarea tiene <strong>su propia escena</strong> y no depende de las demás: puedes
+  hacerlas en el orden que quieras.</p>
+</div>
+
+<nav class="toc">
+  <a href="#reglas">Reglas</a>
+  <a href="#controles">Controles</a>
+  <a href="#mapa">Mapa del proyecto</a>
+  <a href="#t1">T1</a><a href="#t2">T2</a><a href="#t3">T3</a><a href="#t4">T4</a>
+  <a href="#t5">T5</a><a href="#t6">T6</a><a href="#t7">T7</a>
+</nav>
+
+<h2 id="reglas">Reglas</h2>
+<ul>
+  <li>Trabajo <strong>individual</strong>. Sin IA, sin internet, sin apuntes. <strong>El proyecto es tu referencia:</strong>
+    todo lo que necesitas ya aparece funcionando en algún script del proyecto.</li>
+  <li>Si necesitas <strong>ayuda del profesor</strong> pregunta en voz alta, algunas cosas se permitiran explicar otras no.</li>
+  <li><strong>Un commit por tarea</strong>, con el mensaje <code>T1</code>, <code>T2</code>, … <code>T7</code>. Al final, haz <strong>push</strong>.</li>
+</ul>
+<pre><code>git add -A
+git commit -m "T1"
+git push</code></pre>
+<div class="important">
+  <strong>Si el proyecto no compila, ninguna escena funciona.</strong> Antes de cada commit revisa que la Consola no tenga
+  errores de compilación (rojos) y que puedas entrar a Play.
+</div>
+<ul>
+  <li>En las tareas de <strong>Arreglar</strong> hay <strong>exactamente 1 error</strong>. Arréglalo donde está la causa,
+    no escondas el síntoma.</li>
+  <li>Puedes modificar y crear scripts y, si lo necesitas, asignar referencias en el Inspector.</li>
+</ul>
+
+<h2 id="controles">Controles</h2>
+<table>
+  <tr><th>Acción</th><th>Tecla</th></tr>
+  <tr><td>Moverse</td><td><code>A</code> / <code>D</code> (o flechas)</td></tr>
+  <tr><td>Saltar</td><td><code>Espacio</code></td></tr>
+  <tr><td>Disparar</td><td><code>Enter</code> o clic izquierdo</td></tr>
+</table>
+
+<h2 id="mapa">Mapa del proyecto</h2>
+<pre><code>Assets/
+  Scenes/        Una escena por tarea: T1_Pinchos … T7_Aturdido
+  Scripts/
+    Core/        GameEvents, GameItem, IDamagable, StateMachine
+    Player/      PlayerPhysics (jugador + máquina de estados), Bullet, PlayerColorChanger
+    Items/       Enemy (sierra), Gem (gema), Key (llave)
+    Level/       Spikes, MovingPlatform, Respawner, StunEnemy, DebugKeys
+    Score/       ScoreManager
+  Prefabs/       Player, Bullet, Enemy, Gem, Key, Spikes, MovingPlatform, StunEnemy, Ground, Wall, TargetFlag
+  Materials/     PlayerMaterial (fricción 0)
+  Settings/      URP e InputSystem_Actions
+  kenney_platformer-pack-remastered/   Sprites</code></pre>
+<p>Ideas que se usan en todo el proyecto:</p>
+<ul>
+  <li><code>GameEvents.OnTargetDestroyed</code> avisa cuando se destruye una gema o una llave. El dato que envía es un
+    <code>GameItem</code> (<code>GameItem.Gem</code> o <code>GameItem.Key</code>).</li>
+  <li><code>PlayerPhysics</code> controla al jugador con una <strong>máquina de estados</strong> (<code>StateMachine</code>):
+    cada estado tiene métodos de entrada, actualización y salida que se registran con <code>CreateState(...)</code>.</li>
+  <li>Las balas llaman a <code>Damage(...)</code> en todo lo que implemente <code>IDamagable</code>.</li>
+</ul>
+
+<h2 id="tareas">Tareas</h2>
+
+<section class="task" id="t1">
+  <div class="task-head">
+    <span class="badge fix">Arreglar</span>
+    <h3>T1 — Pinchos</h3>
+    <span class="points">1.0 pt</span>
+  </div>
+  <p class="meta">Escena: <code>T1_Pinchos</code> · Script relacionado: <code>Spikes.cs</code></p>
+  <blockquote>"Cuando toco los pinchos, en vez de salir empujado hacia atrás, el personaje sale disparado hacia adelante,
+    atraviesa los pinchos y queda pegado a la pared sin poder moverse."</blockquote>
+  <p>Hay 1 error. <span class="label">Resultado esperado:</span> al tocar los pinchos, el jugador sale empujado hacia
+    atrás, cae y puede volver a moverse.</p>
+</section>
+
+<section class="task" id="t2">
+  <div class="task-head">
+    <span class="badge fix">Arreglar</span>
+    <h3>T2 — Parpadeo</h3>
+    <span class="points">1.0 pt</span>
+  </div>
+  <p class="meta">Escena: <code>T2_Parpadeo</code> · Script relacionado: <code>Enemy.cs</code></p>
+  <blockquote>"Cuando le disparo a la sierra, la bala la golpea, pero la sierra ya no parpadea."</blockquote>
+  <p>Hay 1 error. <span class="label">Resultado esperado:</span> cada vez que una bala golpea la sierra, la sierra
+    parpadea en negro.</p>
+</section>
+
+<section class="task" id="t3">
+  <div class="task-head">
+    <span class="badge fix">Arreglar</span>
+    <h3>T3 — Puntaje</h3>
+    <span class="points">1.0 pt</span>
+  </div>
+  <p class="meta">Escena: <code>T3_Puntaje</code> · Script relacionado: <code>ScoreManager.cs</code></p>
+  <blockquote>"Cuando destruyo la gema aparece un error rojo en la Consola y el puntaje no sube. Con la llave funciona
+    bien."</blockquote>
+  <p>Hay 1 error. <span class="label">Resultado esperado:</span> destruir la gema suma 3 puntos y destruir la llave
+    suma 1 (se ve en la Consola: <code>Puntaje: …</code>), sin errores.</p>
+</section>
+
+<section class="task" id="t4">
+  <div class="task-head">
+    <span class="badge fix">Arreglar</span>
+    <h3>T4 — Suscripción</h3>
+    <span class="points">1.0 pt</span>
+  </div>
+  <p class="meta">Escena: <code>T4_Suscripcion</code> · Script relacionado: <code>PlayerColorChanger.cs</code></p>
+  <p>En esta escena hay dos teclas de prueba: <code>K</code> destruye al jugador y <code>J</code> destruye la siguiente gema.</p>
+  <blockquote>"Si el jugador muere (tecla K) y después se destruye una gema (tecla J), aparece un error rojo en la
+    Consola."</blockquote>
+  <p>Hay 1 error. <span class="label">Resultado esperado:</span> <code>K</code> y luego <code>J</code> no producen
+    ningún error. Mientras el jugador está vivo, sigue cambiando de color al destruir gemas (rojo) o llaves (azul).</p>
+</section>
+
+<section class="task" id="t5">
+  <div class="task-head">
+    <span class="badge complete">Completar</span>
+    <h3>T5 — Plataformas</h3>
+    <span class="points">1.5 pt</span>
+  </div>
+  <p class="meta">Escena: <code>T5_Plataformas</code> · Script relacionado: <code>MovingPlatform.cs</code>
+    (método <code>MyMoveTowards</code>)</p>
+  <blockquote>"<code>MyMoveTowards</code> está vacío. Cada plataforma debe avanzar hacia su bandera y detenerse
+    <strong>exactamente</strong> en ella, sin pasarse."</blockquote>
+  <p><span class="label">Resultado esperado:</span> las dos plataformas (una va a la derecha y otra a la izquierda)
+    avanzan hacia su bandera y se detienen justo en ella. <strong>No uses <code>Mathf.MoveTowards</code>.</strong></p>
+</section>
+
+<section class="task" id="t6">
+  <div class="task-head">
+    <span class="badge complete">Completar</span>
+    <h3>T6 — Reaparecer</h3>
+    <span class="points">1.5 pt</span>
+  </div>
+  <p class="meta">Escena: <code>T6_Reaparecer</code> · Script relacionado: <code>Respawner.cs</code></p>
+  <blockquote>"Pedido: cuando se destruye una gema, debe aparecer una gema nueva en el punto de reaparición
+    (<code>SpawnPoint</code>) 2 segundos después."</blockquote>
+  <p><span class="label">Resultado esperado:</span> cada vez que destruyes la gema, aparece una nueva en el
+    <code>SpawnPoint</code> después de 2 segundos, todas las veces. Las referencias del <code>Respawner</code>
+    (prefab de la gema, <code>SpawnPoint</code> y tiempo) ya están asignadas en la escena.</p>
+</section>
+
+<section class="task" id="t7">
+  <div class="task-head">
+    <span class="badge create">Crear</span>
+    <h3>T7 — Aturdido</h3>
+    <span class="points">2.0 pt</span>
+  </div>
+  <p class="meta">Escena: <code>T7_Aturdido</code> · Scripts relacionados: <code>PlayerPhysics.cs</code> y
+    <code>StunEnemy.cs</code></p>
+  <blockquote>"Pedido del diseñador: al tocar al enemigo azul, el jugador queda aturdido durante 1 segundo: no se puede
+    mover y se pone amarillo. Después vuelve a la normalidad."</blockquote>
+  <p class="label">Resultado esperado:</p>
+  <ol>
+    <li>Al tocar al enemigo azul, el jugador entra en un <strong>nuevo estado</strong> de su máquina de estados.</li>
+    <li>Mientras está aturdido, <strong>no se mueve</strong>.</li>
+    <li>Mientras está aturdido, se ve <strong>amarillo</strong>.</li>
+    <li>Después de ~1 segundo vuelve a la normalidad, <strong>con su color original</strong>.</li>
+    <li>Funciona <strong>cada vez</strong> que toca al enemigo, no solo la primera.</li>
+  </ol>
+  <p><code>StunEnemy.cs</code> ya está puesto en el enemigo azul, pero está vacío.</p>
+</section>
+
+<p class="total">Total: 9.0 puntos. Recuerda: un commit por tarea (<code>T1</code> … <code>T7</code>) y push al final.</p>
+
+</main>
+</body>
+</html>

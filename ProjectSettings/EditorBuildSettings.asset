@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/T1_Pinchos.unity
+    guid: e59d9252695e14e718947b81502f2c7b
+  - enabled: 1
+    path: Assets/Scenes/T2_Parpadeo.unity
+    guid: e7e2bece1bae24b3fb58b02f49da9807
+  - enabled: 1
+    path: Assets/Scenes/T3_Puntaje.unity
+    guid: c01b6a0d01bc942bfbe5f222c877af42
+  - enabled: 1
+    path: Assets/Scenes/T4_Suscripcion.unity
+    guid: 46d2b3d8667874a2e8af2515f092bb5c
+  - enabled: 1
+    path: Assets/Scenes/T5_Plataformas.unity
+    guid: 372f229fa60874945b0d060830f8c631
+  - enabled: 1
+    path: Assets/Scenes/T6_Reaparecer.unity
+    guid: 3f374c8de84c6479188c3d2e42de102c
+  - enabled: 1
+    path: Assets/Scenes/T7_Aturdido.unity
+    guid: 8684dd7ac9204462b8fffa5377369264
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_UseUCBPForAssetBundles: 0
