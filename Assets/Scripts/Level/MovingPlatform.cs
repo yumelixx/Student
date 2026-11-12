@@ -16,6 +16,6 @@ public class MovingPlatform : MonoBehaviour
     {
         float step = Mathf.Clamp(target - current,-maxDelta, maxDelta); 
         return current  + step; 
-        //
+        
     }
 }

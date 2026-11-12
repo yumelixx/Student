@@ -10,6 +10,7 @@ public enum PlayerState
     Jumping,
     Firing,
     Hurt,
+    Quieto,
 }
 
 [RequireComponent(typeof(Rigidbody2D))]
